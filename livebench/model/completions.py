@@ -11,6 +11,8 @@ from openai.types.chat import ChatCompletion, ChatCompletionChunk
 from tenacity import (retry, retry_if_exception_type, stop_after_attempt,
                       wait_fixed, wait_incrementing)
 
+from .prompt_pulse import chat_completion_prompt_pulse
+
 logging.basicConfig(stream=sys.stdout, level=logging.WARNING)
 
 
@@ -632,5 +634,7 @@ def get_api_function(provider_name: str) -> ModelAPI:
         return chat_completion_aws
     elif provider_name == 'deepinfra':
         return chat_completion_deepinfra
+    elif provider_name == "prompt_pulse": 
+        return chat_completion_prompt_pulse
     else:
         return chat_completion_openai
