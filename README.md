@@ -223,3 +223,15 @@ Here, we describe our dataset documentation. This information is also available 
   year={2025},
 }
 ```
+
+## How to run with Orion/Elen
+
+python run_livebench.py --model "gemini-3-plain" --model-provider-override "prompt_pulse" --api-base "https://llm-manager.etacar.io/api/external" --api-key "xxx" --bench-name live_bench/math --livebench-release-option 2024-11-25 --parallel-requests 5
+
+python run_livebench.py --model "gemini-3-elen" --model-provider-override "prompt_pulse" --api-base "https://llm-manager.etacar.io/api/external" --api-key "xxx" --bench-name live_bench/math --livebench-release-option 2024-11-25 --parallel-requests 5
+
+python gen_ground_truth_judgment.py --model gemini-3-plain --bench-name live_bench/math --livebench-release-option 2024-11-25 --ignore-missing-answers
+
+python gen_ground_truth_judgment.py --model gemini-3-elen --bench-name live_bench/math --livebench-release-option 2024-11-25 --ignore-missing-answers
+
+python show_livebench_result.py --bench-name live_bench/math --verbose --ignore-missing-judgments

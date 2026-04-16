@@ -15,11 +15,8 @@ def chat_completion_prompt_pulse(model, messages, api_dict, **kwargs):
     }
 
     target_model_name = "google:gemini-3-pro-preview"
-    agent_id = None
 
     try:
-        agent_id = os.getenv("LIVEBENCH_AGENT_ID")
-        
         payload = {
             "title": f"LiveBench {target_model_name}",
             "model": target_model_name
